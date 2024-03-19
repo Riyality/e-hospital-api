@@ -1,0 +1,1 @@
+UPDATE `spti`.`staff` SET `role` = 'HR' WHERE (`id` = '1');
