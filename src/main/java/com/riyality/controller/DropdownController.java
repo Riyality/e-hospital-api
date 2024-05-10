@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.riyality.constants.MessageConstants;
 import com.riyality.dto.doctor.DoctorSpecializationDto;
+import com.riyality.constants.MessageConstants;
 import com.riyality.dto.dropdowns.MedicineTypeDto;
 import com.riyality.dto.wrapper.DoctorSpecializationDtoWrapper;
 import com.riyality.service.DropdownService;

@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.riyality.constants.MessageConstants;
 import com.riyality.dto.patient.PatientRequestDto;
 import com.riyality.dto.patient.PatientResponseDto;
+import com.riyality.constants.MessageConstants;
 import com.riyality.service.PatientService;
 
 @RestController
@@ -33,7 +33,7 @@ public class PatientController {
 	private PatientService patientService;
 
 	@GetMapping( "/branch/{branchId}" )
-	public ResponseEntity<Page<PatientResponseDto>> getAllPatients( @PathVariable int branchId, @RequestParam int pageNo, Pageable pageable ) {
+	public ResponseEntity<Page<PatientResponseDto>> getAllPatients(@Valid  @PathVariable int branchId, @RequestParam int pageNo, Pageable pageable ) {
 		pageable = PageRequest.of( pageNo, 50 );
 		return ResponseEntity.status( HttpStatus.OK ).body( patientService.getAllPatients( branchId, pageable ) );
 	}

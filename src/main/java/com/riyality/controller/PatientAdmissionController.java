@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.riyality.constants.MessageConstants;
 import com.riyality.dto.patient.BillRequestDto;
 import com.riyality.dto.patient.DischargeResponseDto;
 import com.riyality.dto.patient.PatientAdmissionRequestDto;
 import com.riyality.dto.patient.PatientResponseDto;
+import com.riyality.constants.MessageConstants;
 import com.riyality.service.PatientAdmissionService;
 
 @RestController
@@ -52,7 +52,7 @@ public class PatientAdmissionController {
 
 	@ResponseBody
 	@PostMapping( "/bills/admissions" )
-	public ResponseEntity<String> generateAndPayBill( @RequestBody BillRequestDto dto ) {
+	public ResponseEntity<String> generateAndPayBill( @Valid @RequestBody BillRequestDto dto ) {
 		String result = admissionService.generateAndPayBill( dto );
 		if ( result.equals( "success" ) )
 			return ResponseEntity.status( HttpStatus.CREATED ).body( MessageConstants.BILL_PAID_SUCCESS_MESSAGE );
