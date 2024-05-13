@@ -1,5 +1,7 @@
 package com.riyality.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,7 @@ public class LoginController {
 	private LoginService loginservice;
 
 	@PostMapping
-	public ResponseEntity<LoginResponceDto> login( @RequestBody LoginRequestDto dto ) {
+	public ResponseEntity<LoginResponceDto> login( @RequestBody @Valid LoginRequestDto dto ) {
 		LoginResponceDto loginDto = loginservice.login( dto );
 		if ( loginDto != null ) {
 			return ResponseEntity.status( HttpStatus.OK ).body( loginDto );
