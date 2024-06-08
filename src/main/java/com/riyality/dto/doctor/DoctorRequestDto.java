@@ -1,5 +1,6 @@
 package com.riyality.dto.doctor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
@@ -39,8 +40,8 @@ public class DoctorRequestDto {
 	@Size(max = 32)
 	private String availableTimeSlots;
 
-	@DateTimeFormat( pattern = "yyyy-MM-dd'T'HH:mm" )
-	private LocalDateTime joiningDate;
+	@DateTimeFormat( pattern = "yyyy-MM-dd" )
+	private LocalDate joiningDate;
 	@Size(max = 128)
 	private String qualifications;
 }

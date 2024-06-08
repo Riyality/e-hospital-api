@@ -1,8 +1,8 @@
 package com.riyality.dto.patient;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.riyality.dto.cot.CotResponseDto;
 import com.riyality.dto.doctor.DoctorResponseDto;
@@ -17,11 +17,11 @@ public class DischargeResponseDto {
 
 	private Long admissionId;
 
-	@DateTimeFormat( pattern = "yyyy-MM-dd'T'HH:mm" )
-	private LocalDateTime admissionDate;
+	
+	private LocalDate admissionDate;
 
-	@DateTimeFormat( pattern = "yyyy-MM-dd'T'HH:mm" )
-	private LocalDateTime dischargeDate;
+	
+	private LocalDate dischargeDate;
 	private Long admittedDays;
 	private float bill;
 

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -34,13 +36,15 @@ public class HrController {
 
 	@Autowired
 	private HrService hrService;
+	Logger logger = LoggerFactory.getLogger(HrController.class);
 
 	@PostMapping( "/doctors" )
 	public ResponseEntity<String> addDoctor( @Valid @RequestBody DoctorRequestDto doctorDto ) {
 		boolean isAdded = hrService.addDoctor( doctorDto );
-		if ( isAdded )
+		if ( isAdded ){
+			logger.warn("warning call");
 			return ResponseEntity.status( HttpStatus.CREATED ).body( MessageConstants.ADD_DOCTOR_SUCCESS_MESSAGE );
-
+		}
 		else
 			return ResponseEntity.status( HttpStatus.BAD_REQUEST ).body( MessageConstants.ADD_DOCTOR_ERROR_MESSAGE );
 
@@ -55,6 +59,7 @@ public class HrController {
 
 	@GetMapping( "/all-doctors/{branchId}" )
 	public ResponseEntity<List<DoctorResponseDto>> allDoctorsList( @PathVariable int branchId ) {
+		
 		return ResponseEntity.status( HttpStatus.OK ).body( hrService.allDoctorsList( branchId ) );
 
 	}

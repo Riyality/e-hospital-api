@@ -1,5 +1,6 @@
 package com.riyality.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -34,7 +35,7 @@ public class Patient {
 	private String gender;
 
 	@Column( name = "date_of_birth" )
-	private LocalDateTime dateOfBirth;
+	private LocalDate dateOfBirth;
 
 	private String address;
 

@@ -19,6 +19,7 @@ public class PatientAdmissionMapper {
 		entity.setNextOfKinRelationship( requestDto.getNextOfKinRelationship() );
 		entity.setNextOfKinPhoneNumber( requestDto.getNextOfKinPhoneNumber() );
 		entity.setAdmissionStatus( requestDto.getAdmissionStatus() );
+		entity.setDiagnosis(requestDto.getDiagnosis());
 		return entity;
 	}
 

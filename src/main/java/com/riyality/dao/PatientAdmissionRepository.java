@@ -1,5 +1,6 @@
 package com.riyality.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -14,5 +15,7 @@ public interface PatientAdmissionRepository extends CrudRepository<PatientAdmiss
 	PatientAdmission findByPatientAndAdmissionStatus( Patient patient, String string );
 
 	List<PatientAdmission> findAllByAdmissionStatus( String string );
+
+	List<PatientAdmission> findAllByAdmissionStatusAndAdmissionDate(String string, LocalDate todayDate);
 
 }

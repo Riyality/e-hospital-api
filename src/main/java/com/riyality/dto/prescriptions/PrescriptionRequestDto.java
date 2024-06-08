@@ -19,4 +19,5 @@ public class PrescriptionRequestDto {
 	private LocalDate prescriptionDate;
 	private String prescription;
 	private List<MedicineRequestDto> medicines;
+	private String diagnosis;
 }

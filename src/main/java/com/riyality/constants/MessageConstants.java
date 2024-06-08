@@ -48,7 +48,7 @@ public interface MessageConstants {
 	// Ward Controller
 	String ADD_WARD_SUCCESS_MESSAGE = "Ward Addes Successfully";
 	String ADD_WARD_ERROR_MESSAGE = "Unable To Add Ward";
-	String UPDATE_WARD_SUCCESS_MESSAGE = "Ward Added Successfully";
+	String UPDATE_WARD_SUCCESS_MESSAGE = "Ward Update Successfully";
 	String UPDATE_WARD_ERROR_MESSAGE = "Unable To Upadate Ward";
 
 	String UPDATE_STAFF_SUCCESS_MESSAGE = "Staff updated successfully";
