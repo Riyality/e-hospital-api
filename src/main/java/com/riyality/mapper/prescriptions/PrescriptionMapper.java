@@ -20,6 +20,7 @@ public class PrescriptionMapper {
 		//entity.setDoctorId( requestDto.getDoctorId() );
 		entity.setPrescriptionDate( requestDto.getPrescriptionDate() );
 		entity.setPrescription( requestDto.getPrescription() );
+		entity.setDiagnosis(requestDto.getDiagnosis());          
 		return entity;
 	}
 

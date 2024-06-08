@@ -53,8 +53,8 @@ public class WardController {
 
 	@PutMapping
 	public ResponseEntity<String> updateWard( @Valid @RequestBody WardRequestDto dto ) {
-		boolean isAdded = wardService.updateWard( dto );
-		if ( isAdded )
+		boolean isUpdate= wardService.updateWard( dto );
+		if ( isUpdate )
 			return ResponseEntity.status( HttpStatus.CREATED ).body( MessageConstants.UPDATE_WARD_SUCCESS_MESSAGE );
 
 		else

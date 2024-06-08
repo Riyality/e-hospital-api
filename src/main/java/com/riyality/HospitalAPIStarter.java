@@ -6,8 +6,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class HospitalAPIStarter {
+public class HospitalAPIStarter { 
 	public static void main(String[] args) {
 		SpringApplication.run(HospitalAPIStarter.class, args);
 	}
-}
+} 

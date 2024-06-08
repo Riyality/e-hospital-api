@@ -1,5 +1,6 @@
 package com.riyality.dto.patient;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -39,7 +40,7 @@ public class PatientResponseDto {
 	private int branch;
 	private Long doctorId;
 
-	@DateTimeFormat( pattern = "yyyy-MM-dd'T'HH:mm" )
-	private LocalDateTime dateOfBirth;
+	@DateTimeFormat( pattern = "yyyy-MM-dd" )
+	private LocalDate dateOfBirth;
 	private String admissionStatus;
 }

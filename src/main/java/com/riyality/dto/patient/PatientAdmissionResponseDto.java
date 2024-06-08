@@ -1,6 +1,9 @@
 package com.riyality.dto.patient;
 
-import java.time.LocalDateTime;
+
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,8 +20,10 @@ public class PatientAdmissionResponseDto {
 	private Long patientId;
 	private Long wardId;
 	private Long cotId;
-	private LocalDateTime admissionDate;
-	private LocalDateTime dischargeDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate admissionDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate dischargeDate;
 	private Long doctorId;
 	private String nextOfKinName;
 	private String nextOfKinRelationship;

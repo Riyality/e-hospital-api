@@ -1,5 +1,6 @@
 package com.riyality.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -62,7 +63,7 @@ public class Doctor {
 	private String availableTimeSlots;
 
 	@Column( name = "joining_date" )
-	private LocalDateTime joiningDate;
+	private LocalDate joiningDate;
 
 	@Column( name = "qualifications" )
 	private String qualifications;

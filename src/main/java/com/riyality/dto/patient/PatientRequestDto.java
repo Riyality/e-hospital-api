@@ -1,5 +1,6 @@
 package com.riyality.dto.patient;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotNull;
@@ -60,8 +61,8 @@ public class PatientRequestDto {
 	private int branch;
 	private Long doctorId;
 
-	@DateTimeFormat( pattern = "yyyy-MM-dd'T'HH:mm" )
-	private LocalDateTime dateOfBirth;
+	@DateTimeFormat( pattern = "yyyy-MM-dd" )
+	private LocalDate dateOfBirth;
 
 	private String admissionStatus;
 

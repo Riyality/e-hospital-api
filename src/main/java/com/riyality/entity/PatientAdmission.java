@@ -1,6 +1,7 @@
 package com.riyality.entity;
 
-import java.time.LocalDateTime;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,10 +39,10 @@ public class PatientAdmission {
 	private Cot cot;
 
 	@Column( name = "admission_date", nullable = false )
-	private LocalDateTime admissionDate;
+	private LocalDate admissionDate;
 
 	@Column( name = "discharge_date" )
-	private LocalDateTime dischargeDate;
+	private  LocalDate dischargeDate;
 
 	@ManyToOne
 	@JoinColumn( name = "doctor_id", nullable = false )
@@ -62,4 +63,7 @@ public class PatientAdmission {
 
 	@Column( name = "admission_status" )
 	private String admissionStatus;
+	
+	@Column(name = "diagnosis" )
+	private String diagnosis;
 }

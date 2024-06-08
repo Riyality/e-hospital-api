@@ -1,5 +1,6 @@
 package com.riyality.service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -131,7 +132,7 @@ public class PatientAdmissionServiceImpl implements PatientAdmissionService {
 			DischargeResponseDto dto = new DischargeResponseDto();
 			dto.setAdmissionId( patientAdmission.getAdmissionId() );
 			dto.setAdmissionDate( patientAdmission.getAdmissionDate() );
-			dto.setDischargeDate( LocalDateTime.now() );
+			dto.setDischargeDate( LocalDate.now() );
 			dto.setWard( wardMapper.toDto( patientAdmission.getWard() ) );
 			dto.setCot( cotMapper.toDto( patientAdmission.getCot() ) );
 			dto.setPatient( patientMapper.toDto( patientAdmission.getPatient() ) );
