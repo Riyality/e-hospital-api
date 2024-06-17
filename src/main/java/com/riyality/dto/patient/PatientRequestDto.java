@@ -65,5 +65,8 @@ public class PatientRequestDto {
 	private LocalDate dateOfBirth;
 
 	private String admissionStatus;
+	
+	private String diagnosis;
+	
 
 }

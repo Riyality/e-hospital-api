@@ -43,4 +43,5 @@ public class PatientResponseDto {
 	@DateTimeFormat( pattern = "yyyy-MM-dd" )
 	private LocalDate dateOfBirth;
 	private String admissionStatus;
+	private String diagnosis;
 }

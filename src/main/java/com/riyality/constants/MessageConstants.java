@@ -56,4 +56,8 @@ public interface MessageConstants {
 
 	String BILL_PAID_SUCCESS_MESSAGE = "Bill paid successfully";
 	String BILL_PAID_FAIL_MESSAGE = "Unable to pay bill";
+	
+	//Treatment Section Start
+	String ADD_TREATMENT_SUCCESS_M="Add Treatment Successfully";
+	String ADD_TREATMENT_ERROR="Add Treatment Error";
 }
