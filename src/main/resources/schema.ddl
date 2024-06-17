@@ -215,3 +215,17 @@ CREATE TABLE `spti`.`treatments` (
   `status` VARCHAR(45) NULL,
    FOREIGN KEY (admission_id) REFERENCES patient_admissions(admission_id),
   PRIMARY KEY (`id`));
+  
+  CREATE TABLE `treatment` (
+  `treatment_id` int NOT NULL AUTO_INCREMENT,
+  `medicine_type` varchar(45) DEFAULT NULL,
+  `medicine` varchar(45) DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `price` int DEFAULT NULL,
+  `treatment_date` date DEFAULT NULL,
+  `payment` varchar(45) DEFAULT NULL,
+  `admission` int DEFAULT NULL,
+  PRIMARY KEY (`treatment_id`),
+  KEY `Treatment_byky_1_idx` (`admission`),
+  CONSTRAINT `Treatment_byky_1` FOREIGN KEY (`admission`) REFERENCES `patient_admissions` (`admission_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
