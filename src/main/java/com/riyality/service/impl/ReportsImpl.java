@@ -10,62 +10,108 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.riyality.dao.PatientAdmissionRepository;
+import com.riyality.dao.PatientRepository;
 import com.riyality.dao.ReportsRepository;
+import com.riyality.dto.patient.PatientAdmissionResponseDto;
 import com.riyality.dto.patient.PatientResponseDto;
 import com.riyality.entity.Patient;
 import com.riyality.entity.PatientAdmission;
+import com.riyality.mapper.patient.PatientAdmissionMapper;
 import com.riyality.mapper.patient.PatientMapper;
 import com.riyality.service.ReportsService;
 
 @Service
-public class ReportsImpl implements ReportsService{
+public class ReportsImpl implements ReportsService {
 	@Autowired
 	ReportsRepository reportsRepository;
 	@Autowired
 	private PatientMapper patientMapper;
 	@Autowired
 	private PatientAdmissionRepository admissionRepository;
+	@Autowired
+	private PatientAdmissionMapper admissionMapper;
 
+	@Autowired
+	private PatientRepository patientRepo;
 
 	@Override
 	public List<PatientResponseDto> reportsPatients(String type, String user) {
-		List<Patient> patient= (List<Patient>) reportsRepository.findAll();
-		
-		List<PatientResponseDto> a=patientMapper.toList(patient);
+		List<Patient> patient = (List<Patient>) reportsRepository.findAll();
+
+		List<PatientResponseDto> a = patientMapper.toList(patient);
 		return a;
-		
+
 	}
+
 	@Override
-	public List<PatientResponseDto> findAllAdmittedPatients(String type ) {
-		 
-            LocalDate now = LocalDate.now();
-        
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        
-        String formattedDateTime = now.format(formatter);
-        
-		
-		
-		if(type.equals("all"))
-		{
-		List<PatientAdmission> admissions = admissionRepository.findAllByAdmissionStatus( "Admitted" );
-		List<Patient> patients = admissions.stream().map( admission -> admission.getPatient() ).collect( Collectors.toList() );
-		System.out.println(admissions);
-		return patientMapper.toList( patients );
+	public List<PatientAdmissionResponseDto> findAllAdmittedPatients(String type) {
+
+		LocalDate now = LocalDate.now();
+
+		if (type.equals("all")) {
+			List<PatientAdmission> admissions = admissionRepository.findAllByAdmissionStatus("Admitted");
+			List<PatientAdmissionResponseDto> list = admissionMapper.toList(admissions);
+			for (PatientAdmissionResponseDto dto : list) {
+				Patient patient = patientRepo.findById(dto.getPatientId()).get();
+				dto.setPatientName(patient.getFirstName() + " " + patient.getLastName());
+				dto.setContact(patient.getPhoneNumber());
+			}
+			return list;
 		}
-		if(type.equals("todays"))
-		{
-			System.out.println("********************************************************************");
-			List<PatientAdmission> admissions = admissionRepository.findAllByAdmissionStatusAndAdmissionDate( "Admitted",now );
-			List<Patient> patients = admissions.stream().map( admission -> admission.getPatient() ).collect( Collectors.toList() );
-			 List<PatientResponseDto> b= patientMapper.toList( patients );
-			  return b;
-			
+		if (type.equals("todays")) {
+			List<PatientAdmission> admissions = admissionRepository.findAllByAdmissionStatusAndAdmissionDate("Admitted",
+					now);
+			List<PatientAdmissionResponseDto> list = admissionMapper.toList(admissions);
+			for (PatientAdmissionResponseDto dto : list) {
+				Patient patient = patientRepo.findById(dto.getPatientId()).get();
+				dto.setPatientName(patient.getFirstName() + " " + patient.getLastName());
+				dto.setContact(patient.getPhoneNumber());
+			}
+			return list;
+
+		}
+		if (type.equals("weekly")) {
+			LocalDate oneWeekAgo = now.minusDays(7);
+
+			List<PatientAdmission> admissions = admissionRepository
+					.findByAdmissionStatusAndAdmissionDateBetween("Admitted", oneWeekAgo, now);
+			List<PatientAdmissionResponseDto> list = admissionMapper.toList(admissions);
+			for (PatientAdmissionResponseDto dto : list) {
+				Patient patient = patientRepo.findById(dto.getPatientId()).get();
+				dto.setPatientName(patient.getFirstName() + " " + patient.getLastName());
+				dto.setContact(patient.getPhoneNumber());
+			}
+			return list;
+
+		}
+		if (type.equals("monthly")) {
+			LocalDate oneWeekAgo = now.minusDays(30);
+
+			List<PatientAdmission> admissions = admissionRepository
+					.findByAdmissionStatusAndAdmissionDateBetween("Admitted", oneWeekAgo, now);
+			List<PatientAdmissionResponseDto> list = admissionMapper.toList(admissions);
+			for (PatientAdmissionResponseDto dto : list) {
+				Patient patient = patientRepo.findById(dto.getPatientId()).get();
+				dto.setPatientName(patient.getFirstName() + " " + patient.getLastName());
+				dto.setContact(patient.getPhoneNumber());
+			}
+			return list;
+		}
+		if (type.equals("yearly")) {
+			LocalDate oneWeekAgo = now.minusDays(365);
+
+			List<PatientAdmission> admissions = admissionRepository
+					.findByAdmissionStatusAndAdmissionDateBetween("Admitted", oneWeekAgo, now);
+			List<PatientAdmissionResponseDto> list = admissionMapper.toList(admissions);
+			for (PatientAdmissionResponseDto dto : list) {
+				Patient patient = patientRepo.findById(dto.getPatientId()).get();
+				dto.setPatientName(patient.getFirstName() + " " + patient.getLastName());
+				dto.setContact(patient.getPhoneNumber());
+			}
+			return list;
+
 		}
 		return null;
 	}
-	
-	
-	
 
 }

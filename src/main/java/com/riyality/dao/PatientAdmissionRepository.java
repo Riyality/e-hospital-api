@@ -18,4 +18,6 @@ public interface PatientAdmissionRepository extends CrudRepository<PatientAdmiss
 
 	List<PatientAdmission> findAllByAdmissionStatusAndAdmissionDate(String string, LocalDate todayDate);
 
+	List<PatientAdmission> findByAdmissionStatusAndAdmissionDateBetween(String string, LocalDate oneWeekAgo, LocalDate now);
+
 }
