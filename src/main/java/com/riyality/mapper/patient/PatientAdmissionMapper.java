@@ -1,9 +1,14 @@
 package com.riyality.mapper.patient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.riyality.dto.patient.PatientAdmissionRequestDto;
 import com.riyality.dto.patient.PatientAdmissionResponseDto;
+import com.riyality.dto.patient.PatientResponseDto;
+import com.riyality.entity.Patient;
 import com.riyality.entity.PatientAdmission;
 
 @Component
@@ -38,6 +43,15 @@ public class PatientAdmissionMapper {
 		dto.setNextOfKinPhoneNumber( entity.getNextOfKinPhoneNumber() );
 		dto.setBranchId( entity.getBranch().getId() );
 		dto.setAdmissionStatus( entity.getAdmissionStatus() );
+		dto.setDiagnosis(entity.getDiagnosis());
 		return dto;
+	}
+	
+	public List<PatientAdmissionResponseDto> toList( List<PatientAdmission> content ) {
+		List<PatientAdmissionResponseDto> list = new ArrayList<>();
+		for ( PatientAdmission dto : content )
+			list.add( toDto( dto ) );
+		
+		return list;
 	}
 }
