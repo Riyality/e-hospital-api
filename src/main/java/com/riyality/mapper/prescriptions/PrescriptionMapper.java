@@ -18,7 +18,7 @@ public class PrescriptionMapper {
 		entity.setPrescriptionId( requestDto.getPrescriptionId() );
 		//entity.setPatientId( requestDto.getPatientId() );
 		//entity.setDoctorId( requestDto.getDoctorId() );
-		entity.setPrescriptionDate( requestDto.getPrescriptionDate() );
+		entity.setPrescription_date( requestDto.getPrescriptionDate() );
 		entity.setPrescription( requestDto.getPrescription() );
 		entity.setDiagnosis(requestDto.getDiagnosis());          
 		return entity;
@@ -29,7 +29,7 @@ public class PrescriptionMapper {
 		dto.setPrescriptionId( entity.getPrescriptionId() );
 		dto.setPatientId( entity.getPatient().getId() );
 		dto.setDoctorId( entity.getDoctor().getId() );
-		dto.setPrescriptionDate( entity.getPrescriptionDate() );
+		dto.setPrescriptionDate( entity.getPrescription_date() );
 		dto.setPrescription( entity.getPrescription() );
 		return dto;
 	}
