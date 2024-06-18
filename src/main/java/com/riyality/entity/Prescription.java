@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,7 +36,8 @@ public class Prescription {
 	private Doctor doctor;
 
 	@Column( name = "prescription_date", nullable = false )
-	private LocalDate prescriptionDate;
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDate prescription_date;
 
 	@Column( columnDefinition = "TEXT" )
 	private String prescription;
