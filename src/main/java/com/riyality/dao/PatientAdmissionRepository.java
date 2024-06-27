@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.riyality.dto.patient.PatientAdmissionResponseDto;
+import com.riyality.dto.patient.PatientResponseDto;
 import com.riyality.entity.Patient;
 import com.riyality.entity.PatientAdmission;
 
@@ -19,5 +21,7 @@ public interface PatientAdmissionRepository extends CrudRepository<PatientAdmiss
 	List<PatientAdmission> findAllByAdmissionStatusAndAdmissionDate(String string, LocalDate todayDate);
 
 	List<PatientAdmission> findByAdmissionStatusAndAdmissionDateBetween(String string, LocalDate oneWeekAgo, LocalDate now);
+
+	List<PatientAdmission> findByPatientId(Long id);
 
 }

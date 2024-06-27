@@ -38,6 +38,7 @@ public class PatientAdmissionMapper {
 		dto.setAdmissionDate( entity.getAdmissionDate() );
 		dto.setDischargeDate( entity.getDischargeDate() );
 		dto.setDoctorId( entity.getDoctor().getId() );
+		dto.setDoctorName(entity.getDoctor().getFirstName()+" "+entity.getDoctor().getLastName());
 		dto.setNextOfKinName( entity.getNextOfKinName() );
 		dto.setNextOfKinRelationship( entity.getNextOfKinRelationship() );
 		dto.setNextOfKinPhoneNumber( entity.getNextOfKinPhoneNumber() );

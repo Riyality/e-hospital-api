@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.riyality.dto.patient.BillRequestDto;
 import com.riyality.dto.patient.DischargeResponseDto;
 import com.riyality.dto.patient.PatientAdmissionRequestDto;
+import com.riyality.dto.patient.PatientAdmissionResponseDto;
 import com.riyality.dto.patient.PatientResponseDto;
 import com.riyality.constants.MessageConstants;
 import com.riyality.service.PatientAdmissionService;
@@ -60,4 +61,10 @@ public class PatientAdmissionController {
 		else
 			return ResponseEntity.status( HttpStatus.BAD_REQUEST ).body( MessageConstants.BILL_PAID_FAIL_MESSAGE );
 	}
+	@GetMapping( "/admission-history/patient/{id}" )
+	public ResponseEntity<List<PatientAdmissionResponseDto>> findAdmissionDetailsByPatientId( @PathVariable Long id ) {
+		return ResponseEntity.status( HttpStatus.OK ).body( admissionService.findAdmissionDetailsByPatientId( id ) );
+	}
+	
+	
 }

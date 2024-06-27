@@ -1,7 +1,6 @@
 package com.riyality.service.impl;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +19,7 @@ import com.riyality.dao.WardRepository;
 import com.riyality.dto.patient.BillRequestDto;
 import com.riyality.dto.patient.DischargeResponseDto;
 import com.riyality.dto.patient.PatientAdmissionRequestDto;
+import com.riyality.dto.patient.PatientAdmissionResponseDto;
 import com.riyality.dto.patient.PatientResponseDto;
 import com.riyality.entity.Bill;
 import com.riyality.entity.Branch;
@@ -77,7 +77,7 @@ public class PatientAdmissionServiceImpl implements PatientAdmissionService {
 
 	@Autowired
 	private BillRepository billRepository;
-
+	
 	@Override
 	public boolean addAdmission( PatientAdmissionRequestDto dto ) {
 
@@ -164,6 +164,14 @@ public class PatientAdmissionServiceImpl implements PatientAdmissionService {
 			return "success";
 		}
 		return "fail";
+	}
+
+	@Override
+	public List<PatientAdmissionResponseDto> findAdmissionDetailsByPatientId(Long id) {
+		
+		List<PatientAdmission> admissions = admissionRepository.findByPatientId(id);
+		
+		return admissionMapper.toList(admissions);
 	}
 
 }
