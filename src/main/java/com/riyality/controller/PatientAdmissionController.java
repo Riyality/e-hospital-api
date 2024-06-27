@@ -45,6 +45,11 @@ public class PatientAdmissionController {
 	public ResponseEntity<DischargeResponseDto> dischargePatient( @PathVariable Long id ) {
 		return ResponseEntity.status( HttpStatus.OK ).body( admissionService.dischargePatient( id ) );
 	}
+	
+	@PostMapping( "/discharge/patient/{id}" )
+	public ResponseEntity<DischargeResponseDto> updateStatusPatient( @PathVariable Long id ) {
+		return ResponseEntity.status( HttpStatus.OK ).body( admissionService.updateStatusPatient( id ) );
+	}
 
 	@GetMapping( "/current-admissions/branch/{branchId}" )
 	public ResponseEntity<List<PatientResponseDto>> findAllAdmittedPatients( @PathVariable int branchId ) {

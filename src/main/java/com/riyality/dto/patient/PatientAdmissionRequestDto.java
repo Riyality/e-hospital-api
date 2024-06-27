@@ -27,6 +27,6 @@ public class PatientAdmissionRequestDto {
 	private String nextOfKinPhoneNumber;
 	private int branchId;
 	private String admissionStatus;
-	private String diagnosis;
+	//private String diagnosis;
 
 }

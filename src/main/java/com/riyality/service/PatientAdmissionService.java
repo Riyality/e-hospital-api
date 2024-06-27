@@ -18,6 +18,9 @@ public interface PatientAdmissionService {
 
 	String generateAndPayBill( BillRequestDto dto );
 
+	DischargeResponseDto updateStatusPatient(Long id);
+
 	List<PatientAdmissionResponseDto> findAdmissionDetailsByPatientId(Long id);
+
 
 }
