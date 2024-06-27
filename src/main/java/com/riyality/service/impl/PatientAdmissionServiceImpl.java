@@ -1,13 +1,13 @@
 package com.riyality.service.impl;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.riyality.dao.BillRepository;
@@ -165,5 +165,38 @@ public class PatientAdmissionServiceImpl implements PatientAdmissionService {
 		}
 		return "fail";
 	}
+
+	@Override
+	public DischargeResponseDto updateStatusPatient(Long id) {
+	    Optional<PatientAdmission> patientAdmissionOpt = admissionRepository.findById(id);
+
+	    if (patientAdmissionOpt.isPresent()) {
+	        PatientAdmission patientAdmission = patientAdmissionOpt.get();
+	        patientAdmission.setAdmissionStatus("Discharged");
+
+	      
+	        LocalDate today = LocalDate.now();
+	        patientAdmission.setDischargeDate(today);
+
+	        admissionRepository.save(patientAdmission);
+
+	        Patient patient = patientAdmission.getPatient();
+	        patient.setAdmissionStatus("Discharged");
+
+	   
+
+	        patientRepository.save(patient);
+
+	       
+	        DischargeResponseDto response = new DischargeResponseDto();
+	        response.setDischargeDate(today);
+	        return response;
+	    } else {
+	        throw new ResourceNotFoundException("PatientAdmission not found with id: " + id);
+	    }
+	}
+
+
+
 
 }

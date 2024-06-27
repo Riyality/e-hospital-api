@@ -64,6 +64,6 @@ public class PatientAdmission {
 	@Column( name = "admission_status" )
 	private String admissionStatus;
 	
-	@Column(name = "diagnosis" )
-	private String diagnosis;
+//	@Column(name = "diagnosis" )
+//	private String diagnosis;
 }

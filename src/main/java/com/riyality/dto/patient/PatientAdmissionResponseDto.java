@@ -30,7 +30,7 @@ public class PatientAdmissionResponseDto {
 	private String nextOfKinPhoneNumber;
 	private int branchId;
 	private String admissionStatus;
-	private String diagnosis;
+//	private String diagnosis;
 	private String patientName;
 	private String contact;
 	

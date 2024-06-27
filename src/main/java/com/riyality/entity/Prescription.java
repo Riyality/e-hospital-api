@@ -41,8 +41,8 @@ public class Prescription {
 
 	@Column( columnDefinition = "TEXT" )
 	private String prescription;
-	@Column
-	private String diagnosis;
+//	@Column
+//	private String diagnosis;
 	
 
 }

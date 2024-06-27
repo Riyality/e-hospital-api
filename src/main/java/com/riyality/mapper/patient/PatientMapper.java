@@ -34,7 +34,7 @@ public class PatientMapper {
 		entity.setLanguageSpoken( requestDto.getLanguageSpoken() );
 		entity.setReligion( requestDto.getReligion() );
 		entity.setAdmissionStatus( requestDto.getAdmissionStatus() );
-		entity.setDiagnosis(requestDto.getDiagnosis());
+		
 		return entity;
 	}
 
@@ -59,7 +59,7 @@ public class PatientMapper {
 		dto.setNationality( entity.getNationality() );
 		dto.setLanguageSpoken( entity.getLanguageSpoken() );
 		dto.setReligion( entity.getReligion() );
-		dto.setDiagnosis(entity.getDiagnosis());
+	
 		if ( entity.getInsuranceDetail() != null )
 			dto.setInsuranceId( entity.getInsuranceDetail().getId() );
 		dto.setBranch( entity.getBranch().getId() );
