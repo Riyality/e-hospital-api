@@ -14,7 +14,9 @@ import lombok.Setter;
 public class PrescriptionResponseDto {
 	private Long prescriptionId;
 	private Long patientId;
+	private String diagnosis;
 	private Long doctorId;
+	private String doctorName;
 	private LocalDate prescriptionDate;
 	private String prescription;
 }

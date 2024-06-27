@@ -20,6 +20,7 @@ import com.riyality.dao.WardRepository;
 import com.riyality.dto.patient.BillRequestDto;
 import com.riyality.dto.patient.DischargeResponseDto;
 import com.riyality.dto.patient.PatientAdmissionRequestDto;
+import com.riyality.dto.patient.PatientAdmissionResponseDto;
 import com.riyality.dto.patient.PatientResponseDto;
 import com.riyality.entity.Bill;
 import com.riyality.entity.Branch;
@@ -77,7 +78,7 @@ public class PatientAdmissionServiceImpl implements PatientAdmissionService {
 
 	@Autowired
 	private BillRepository billRepository;
-
+	
 	@Override
 	public boolean addAdmission( PatientAdmissionRequestDto dto ) {
 
@@ -167,6 +168,7 @@ public class PatientAdmissionServiceImpl implements PatientAdmissionService {
 	}
 
 	@Override
+
 	public DischargeResponseDto updateStatusPatient(Long id) {
 	    Optional<PatientAdmission> patientAdmissionOpt = admissionRepository.findById(id);
 
@@ -197,6 +199,14 @@ public class PatientAdmissionServiceImpl implements PatientAdmissionService {
 	}
 
 
+
+
+	public List<PatientAdmissionResponseDto> findAdmissionDetailsByPatientId(Long id) {
+		
+		List<PatientAdmission> admissions = admissionRepository.findByPatientId(id);
+		
+		return admissionMapper.toList(admissions);
+	}
 
 
 }

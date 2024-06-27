@@ -5,6 +5,7 @@ import java.util.List;
 import com.riyality.dto.patient.BillRequestDto;
 import com.riyality.dto.patient.DischargeResponseDto;
 import com.riyality.dto.patient.PatientAdmissionRequestDto;
+import com.riyality.dto.patient.PatientAdmissionResponseDto;
 import com.riyality.dto.patient.PatientResponseDto;
 
 public interface PatientAdmissionService {
@@ -18,5 +19,8 @@ public interface PatientAdmissionService {
 	String generateAndPayBill( BillRequestDto dto );
 
 	DischargeResponseDto updateStatusPatient(Long id);
+
+	List<PatientAdmissionResponseDto> findAdmissionDetailsByPatientId(Long id);
+
 
 }

@@ -45,4 +45,5 @@ public class TreatmentController {
    public ResponseEntity<List<TreatmentResponceDto>> TreatmentList(@PathVariable Long admission){
 	   return ResponseEntity.status(HttpStatus.OK).body(service.allTreatments(admission));
    }
+
 }
