@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import com.riyality.dto.prescriptions.PrescriptionRequestDto;
 import com.riyality.dto.prescriptions.PrescriptionResponseDto;
 import com.riyality.entity.Prescription;
-import com.riyality.entity.Ward;
 
 @Component
 public class PrescriptionMapper {
@@ -30,7 +29,7 @@ public class PrescriptionMapper {
 		PrescriptionResponseDto dto = new PrescriptionResponseDto();
 		dto.setPrescriptionId( entity.getPrescriptionId() );
 		dto.setPatientId( entity.getPatient().getId() );
-		dto.setDiagnosis(entity.getPatient().getDiagnosis());
+	//	dto.setDiagnosis(entity.getPatient().getDiagnosis());
 		dto.setDoctorId( entity.getDoctor().getId() );
 		dto.setDoctorName(entity.getDoctor().getFirstName()+" "+entity.getDoctor().getLastName());
 		dto.setPrescriptionDate( entity.getPrescription_date() );

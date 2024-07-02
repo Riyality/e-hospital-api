@@ -1,9 +1,11 @@
 package com.riyality.service.impl;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -101,7 +103,7 @@ public class PatientServiceImpl implements PatientService {
 			Patient addedPatient = patientRepository.save( patient );
 			AppointmentRequestDto dto = new AppointmentRequestDto();
 			dto.setPatientId( addedPatient.getId() );
-			dto.setAppointmentDate( LocalDateTime.now() );
+			dto.setAppointmentDate( LocalDate.now() );
 			if ( opt.isPresent() )
 				dto.setBranch( opt.get().getId() );
 			dto.setStatus( "Confirmed" );
@@ -158,5 +160,35 @@ public class PatientServiceImpl implements PatientService {
 		}
 		return null;
 	}
+
+	@Override
+	public List<PatientResponseDto> findPatientsByPhoneNumber(String phoneNumber) {
+		 List<Patient> patients = patientRepository.findByPhoneNumber(phoneNumber);
+        return patients.stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+		
+	private PatientResponseDto convertToDto(Patient patient) {
+        PatientResponseDto dto = new PatientResponseDto();
+        dto.setId(patient.getId());
+        dto.setFirstName(patient.getFirstName());
+        dto.setLastName(patient.getLastName());
+        dto.setGender(patient.getGender());
+        dto.setDateOfBirth(patient.getDateOfBirth());
+        dto.setAddress(patient.getAddress());
+        dto.setPhoneNumber(patient.getPhoneNumber());
+        dto.setEmail(patient.getEmail());
+        dto.setEmergencyContactName(patient.getEmergencyContactName());
+        dto.setEmergencyContactNumber(patient.getEmergencyContactNumber());
+        dto.setBloodType(patient.getBloodType());
+        dto.setAllergies(patient.getAllergies());
+        dto.setMedicalHistory(patient.getMedicalHistory());
+        dto.setOccupation(patient.getOccupation());
+        dto.setMaritalStatus(patient.getMaritalStatus());
+        dto.setNationality(patient.getNationality());
+        dto.setLanguageSpoken(patient.getLanguageSpoken());
+        dto.setReligion(patient.getReligion());
+        dto.setAdmissionStatus(patient.getAdmissionStatus());
+        return dto;
+    }
 
 }

@@ -20,4 +20,6 @@ public interface PatientService {
 	boolean updatePatient( PatientRequestDto patientRequestDto );
 
 	List<PatientResponseDto> findPatientsByPhoneNumber( int branchId, String phoneNumber );
+
+	List<PatientResponseDto> findPatientsByPhoneNumber(String phoneNumber);
 }

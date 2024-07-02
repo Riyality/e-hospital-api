@@ -1,5 +1,6 @@
 package com.riyality.dto.appointments;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -16,7 +17,7 @@ public class AppointmentResponseDto {
 	private Long id;
 	private Long patientId;
 	private Long doctorId;
-	private LocalDateTime appointmentDate;
+	private LocalDate appointmentDate;
 	private LocalTime appointmentTime;
 	private String status;
 	private String notes;

@@ -1,5 +1,6 @@
 package com.riyality.dto.appointments;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -18,8 +19,8 @@ public class AppointmentRequestDto {
 	private Long id;
 	private Long patientId;
 	private Long doctorId;
-	@DateTimeFormat( pattern = "yyyy-MM-dd'T'HH:mm" )
-	private LocalDateTime appointmentDate;
+	@DateTimeFormat( pattern = "yyyy-MM-dd" )
+	private LocalDate appointmentDate;
 
 	@DateTimeFormat( pattern = "HH:mm" )
 	private LocalTime appointmentTime;

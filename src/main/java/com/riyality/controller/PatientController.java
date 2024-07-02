@@ -76,4 +76,10 @@ public class PatientController {
 		return ResponseEntity.status( HttpStatus.OK ).body( patientService.findPatientsByPhoneNumber( branchId, phoneNumber ) );
 
 	}
+	
+	@GetMapping("/phone_number/{phoneNumber}")
+    public ResponseEntity<List<PatientResponseDto>> findPatientsByPhoneNumber(@PathVariable String phoneNumber) {
+        List<PatientResponseDto> patients = patientService.findPatientsByPhoneNumber(phoneNumber);
+        return ResponseEntity.ok(patients);
+    }
 }

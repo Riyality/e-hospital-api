@@ -1,5 +1,6 @@
 package com.riyality.entity;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
@@ -35,7 +36,7 @@ public class Appointment {
 	private Doctor doctor;
 
 	@Column( name = "appointment_date", nullable = false )
-	private LocalDateTime appointmentDate;
+	private LocalDate appointmentDate;
 
 	@Column( name = "appointment_time", nullable = false )
 	private LocalTime appointmentTime;
