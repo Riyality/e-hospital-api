@@ -15,4 +15,6 @@ public interface PatientRepository extends CrudRepository<Patient, Long> {
 	Page<Patient> findAllByBranch( Branch branch, Pageable pageable );
 
 	List<Patient> findByBranchAndPhoneNumber( Branch branch, String phoneNumber );
+
+	List<Patient> findByPhoneNumber(String phoneNumber);
 }
